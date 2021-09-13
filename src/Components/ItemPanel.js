@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './ItemPanel.css'
+import './ItemPanel.scss'
 
 export default class ItemPanel extends Component {
     render() {
@@ -7,7 +7,7 @@ export default class ItemPanel extends Component {
         let title = index[this.props.identifier]["title"];
         return (
             <div className="item-panel" data-testid="item-panel">
-                {title}
+                <h3>{title}</h3>
             </div>
         )
     }

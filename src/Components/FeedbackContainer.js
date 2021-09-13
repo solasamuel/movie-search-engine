@@ -1,11 +1,12 @@
 import React from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import Item from './Item'
 import './FeedbackContainer.css'
 
 class FeedbackContainer extends React.Component {
     render = () => {
         const wait = 1000;
-        const maxNumOfItems = 5;
+        const maxNumOfItems = 7;
         const items = [];
         let numOfItems = this.props.index.length;
 
@@ -15,18 +16,24 @@ class FeedbackContainer extends React.Component {
 
         for (var i = 0; i < numOfItems; i++) {
             items.push(
-                <Item 
-                key={i}
-                identifier={i}
-                index={this.props.index}
-                wait= {wait} />
+                <CSSTransition
+                    key={i}
+                    timeout={2250}
+                    classNames="slide"
+                >
+                    <Item 
+                    key={i}
+                    identifier={i}
+                    index={this.props.index}
+                    wait= {wait} />
+                </CSSTransition>
             );
         }
 
         return (
-            <div className="feedback-container" data-testid="feedback-container">
+            <TransitionGroup className="feedback-container" data-testid="feedback-container">
                 {items}
-            </div>
+            </TransitionGroup>
         );
     }
 }

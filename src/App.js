@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react'
+import { CSSTransition } from 'react-transition-group';
 import SearchBar from './Components/SearchBar';
 import FeedbackContainer from './Components/FeedbackContainer';
 import Api from './Api'
@@ -11,6 +12,7 @@ class App extends React.Component {
       keyword: '',
       index: '',
       status: '',
+      appearHome: true,
     };
   }
 
@@ -38,13 +40,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <SearchBar
-          onKeywordChange={this.onKeywordChange}
-          handleSubmit={this.handleSubmit}
-          />
-        <FeedbackContainer 
-          index={this.state.index}
-        />
+        <CSSTransition
+          in={this.state.appearHome}
+          appear={true}
+          timeout={1000}
+          classNames="fade"
+        >
+          <div className="Home">
+            <h1>Movies</h1>
+            <SearchBar
+              onKeywordChange={this.onKeywordChange}
+              handleSubmit={this.handleSubmit}
+              />
+            <FeedbackContainer 
+              index={this.state.index}
+            />
+          </div>
+        </CSSTransition>
       </div>
     );
   }

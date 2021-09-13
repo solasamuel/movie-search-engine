@@ -34,7 +34,7 @@ button {
     border-radius: 0 var(--rad) var(--rad) 0;
 }
 input:not(:placeholder-shown) {
-    right: calc(var(--btn-width) - 4%);
+    right: calc(var(--btn-width) - 3%);
     border-radius: var(--rad) 0 0 var(--rad);
     width: calc(100% - var(--btn-width));
     + button {
