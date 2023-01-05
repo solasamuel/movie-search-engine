@@ -1,21 +1,22 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://movies-tvshows-data-imdb.p.rapidapi.com/',
+    baseURL: 'https://online-movie-database.p.rapidapi.com/title/v2/find',
     headers: {
-        'x-rapidapi-host':'movies-tvshows-data-imdb.p.rapidapi.com',
-        'x-rapidapi-key': '4c5abe1032msh1bf8d3c2a94d0f3p152d94jsna9947548674c'
-    },
+        'X-RapidAPI-Key': '4c5abe1032msh1bf8d3c2a94d0f3p152d94jsna9947548674c',
+        'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
+    }
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     getData: (searchQuery) =>
-    instance({
-        'method':'GET',
-        'params': {
-            'type': 'get-movies-by-title',
-            'title': searchQuery,
-        },
-    })
+        instance({
+            'method': 'GET',
+            'params': {
+                'title': searchQuery,
+                'limit': '20',
+                'sortArg': 'moviemeter,asc'
+            },
+        })
 }

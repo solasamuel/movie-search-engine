@@ -28,9 +28,8 @@ class App extends React.Component {
   updateIndex = () => {
     Api.getData(this.state.keyword)
     .then((response)=>{
-      this.setState({index : response.data.movie_results});
+      this.setState({index : response.data.results});
       this.setState({status : response.status});
-
     })
     .catch((error) => {
         console.log(error)
